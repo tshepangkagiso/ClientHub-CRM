@@ -1,0 +1,11 @@
+@baseUrl = http://localhost:4000
+@contentType = application/json
+
+
+# ------------------------------------------------------------
+# 1. HEALTH CHECK & DATABASE CONNECTION TEST
+# ------------------------------------------------------------
+
+### Test if the API is running and can connect to the database
+GET {{baseUrl}}/health
+Content-Type: {{contentType}}
