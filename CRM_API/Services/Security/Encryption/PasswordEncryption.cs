@@ -1,6 +1,5 @@
 ﻿namespace CRM_API.Services.Security.Encryption;
 using BCrypt.Net;
-
 public class PasswordEncryption : IPasswordEncryption
 {
     private const int SALT_ROUNDS = 12;
@@ -30,7 +29,7 @@ public class PasswordEncryption : IPasswordEncryption
             bool isVerified = BCrypt.Verify(password, hashedPassword);
             return isVerified;
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             Console.WriteLine("Password Error: Failed to encrpyt");
             return false;

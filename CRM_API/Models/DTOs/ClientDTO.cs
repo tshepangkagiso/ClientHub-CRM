@@ -1,46 +1,27 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace CRM_API.Models.DTOs;
+﻿namespace CRM_API.Models.DTOs;
 
 public class ClientDTO
 {
     public int Id { get; set; }
-    public IFormFile ProfilePicture { get; set; }
-    [Required]
+    public string ProfilePictureUrl {  get; set; }
     public string Title { get; set; } = string.Empty;
-    [Required]
     public string Name { get; set; } = string.Empty;
-    [Required]
     public string Surname { get; set; } = string.Empty;
-    [Required]
     public string Email { get; set; } = string.Empty;
     public string ContactNumber { get; set; } = string.Empty;
     public string AddressInformation { get; set; } = string.Empty;
-    [Required]
     public string ClientType { get; set; } = string.Empty;
 
-    public ClientDTO(int id, IFormFile profilePicture, string title, string name, string surname, string email, string contactNumber, string addressInformation, string clientType)
+    public ClientDTO(Client client)
     {
-        this.Id = id;
-        this.ProfilePicture = profilePicture;
-        this.Title = title;
-        this.Name = name;
-        this.Surname = surname;
-        this.Email = email;
-        this.ContactNumber = contactNumber;
-        this.AddressInformation = addressInformation;
-        this.ClientType = clientType;
-    }
-
-    public ClientDTO(IFormFile profilePicture, string title, string name, string surname, string email, string contactNumber, string addressInformation, string clientType)
-    {
-        this.ProfilePicture = profilePicture;
-        this.Title = title;
-        this.Name = name;
-        this.Surname = surname;
-        this.Email = email;
-        this.ContactNumber = contactNumber;
-        this.AddressInformation = addressInformation;
-        this.ClientType = clientType;
+        Id = client.Id;
+        ProfilePictureUrl = $"/client/{client.Id}/profile-picture";
+        Title = client.Title;
+        Name = client.Name;
+        Surname = client.Surname;
+        Email = client.Email;
+        ContactNumber = client.ContactNumber ?? string.Empty;
+        AddressInformation = client.AddressInformation ?? string.Empty;
+        ClientType = client.ClientType;
     }
 }

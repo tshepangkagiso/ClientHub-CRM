@@ -1,13 +1,9 @@
-﻿using CRM_API.Models;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Formats.Jpeg;
-using SixLabors.ImageSharp.Processing;
-
-namespace CRM_API.Services.ImageProcessing;
+﻿namespace CRM_API.Services.ImageProcessing;
 
 public class ImageProcessor : IImageProcessor
 {
     private const int DesiredWidth = 300; //300px
+    
     public Byte[] Process(IFormFile rawPicture)
     {
         ProfilePicture picture = new ProfilePicture(rawPicture.FileName, rawPicture.ContentType, rawPicture.OpenReadStream());

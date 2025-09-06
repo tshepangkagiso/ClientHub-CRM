@@ -1,42 +1,38 @@
-﻿using CRM_API.Services.Database;
-using Microsoft.AspNetCore.Mvc;
+﻿namespace CRM_API.Controllers;
 
-namespace CRM_API.Controllers
+[ApiController]
+[Route("[controller]")] 
+public class HealthController : ControllerBase
 {
-    [ApiController]
-    [Route("[controller]")] 
-    public class HealthController : ControllerBase
+    // Inject your DbContext into the controller
+    private readonly ApplicationDbContext _context;
+
+    public HealthController(ApplicationDbContext context)
     {
-        // Inject your DbContext into the controller
-        private readonly ApplicationDbContext _context;
+        _context = context;
+    }
 
-        public HealthController(ApplicationDbContext context)
+    [HttpGet]
+    public async Task<IActionResult> CheckDatabaseConnection()
+    {
+        try
         {
-            _context = context;
+            // This simple query just tests if it can connect and communicate with the DB
+            var canConnect = await _context.Database.CanConnectAsync();
+
+            if (canConnect)
+            {
+                return Ok(new { Message = "Database connection successful!" });
+            }
+            else
+            {
+                return StatusCode(500, new { Message = "Database connection failed." });
+            }
         }
-
-        [HttpGet]
-        public async Task<IActionResult> CheckDatabaseConnection()
+        catch (Exception ex)
         {
-            try
-            {
-                // This simple query just tests if it can connect and communicate with the DB
-                var canConnect = await _context.Database.CanConnectAsync();
-
-                if (canConnect)
-                {
-                    return Ok(new { Message = "Database connection successful!" });
-                }
-                else
-                {
-                    return StatusCode(500, new { Message = "Database connection failed." });
-                }
-            }
-            catch (Exception ex)
-            {
-                // If an exception is thrown, the connection definitely failed
-                return StatusCode(500, new { Message = "Database connection error.", Error = ex.Message });
-            }
+            // If an exception is thrown, the connection definitely failed
+            return StatusCode(500, new { Message = "Database connection error.", Error = ex.Message });
         }
     }
 }

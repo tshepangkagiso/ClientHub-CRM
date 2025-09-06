@@ -1,8 +1,4 @@
-﻿using CRM_API.Services.Database;
-using CRM_API.Services.Security.Encryption;
-using Microsoft.AspNetCore.Mvc;
-
-namespace CRM_API.Controllers;
+﻿namespace CRM_API.Controllers;
 
 [Route("[Controller]")]
 [ApiController]

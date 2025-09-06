@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace CRM_API.Models;
+﻿namespace CRM_API.Models;
 
 public class LoginDetails
 {
