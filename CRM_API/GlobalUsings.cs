@@ -16,3 +16,4 @@ global using CRM_API.Models.DTOs;
 global using Microsoft.OpenApi.Models;
 global using Swashbuckle.AspNetCore.SwaggerGen;
 global using CRM_API.Services.Swagger;
+global using Microsoft.Data.SqlClient;

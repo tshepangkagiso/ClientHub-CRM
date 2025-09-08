@@ -1,0 +1,32 @@
+﻿@model List<ClientDTO>
+<h3>Clients</h3>
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Profile Picture</th>
+            <th>Title</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Contact Number</th>
+            <th>Address Information</th>
+            <th>Client Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var client in Model)
+        {
+            <tr>
+                <td>@client.Id</td>
+                <td><img src="http://localhost:4000/@client.ProfilePictureUrl" alt="img" /></td>
+                <td>@client.Title</td>
+                <td>@client.Name @client.Surname</td>
+                <td>@client.Email</td>
+                <td>@client.ContactNumber</td>
+                <td>@client.AddressInformation</td>
+                <td>@client.ClientType</td>
+            </tr>
+        }
+    </tbody>
+</table>

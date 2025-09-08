@@ -1,9 +1,4 @@
-﻿using CRM_API.Models.DTOs;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-
-namespace CRM_API.Controllers;
+﻿namespace CRM_API.Controllers;
 
 [Route("[controller]")]
 [ApiController]

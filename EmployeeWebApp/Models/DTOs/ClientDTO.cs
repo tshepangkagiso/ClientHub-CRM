@@ -1,4 +1,4 @@
-﻿namespace CRM_API.Models.DTOs;
+﻿namespace EmployeeWebApp.Models.DTOs;
 
 public class ClientDTO
 {
@@ -12,16 +12,5 @@ public class ClientDTO
     public string AddressInformation { get; set; } = string.Empty;
     public string ClientType { get; set; } = string.Empty;
 
-    public ClientDTO(Client client)
-    {
-        Id = client.Id;
-        ProfilePictureUrl = $"client/{client.Id}/profile-picture";
-        Title = client.Title;
-        Name = client.Name;
-        Surname = client.Surname;
-        Email = client.Email;
-        ContactNumber = client.ContactNumber ?? string.Empty;
-        AddressInformation = client.AddressInformation ?? string.Empty;
-        ClientType = client.ClientType;
-    }
+    public ClientDTO() { }
 }

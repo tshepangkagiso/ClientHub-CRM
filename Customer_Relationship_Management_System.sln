@@ -5,6 +5,8 @@ VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM_API", "CRM_API\CRM_API.csproj", "{3734299F-9AF1-4470-B64C-9671C4A9D2CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeWebApp", "EmployeeWebApp\EmployeeWebApp.csproj", "{14B8C5C2-51BC-461F-8D34-59DDE092D73D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3734299F-9AF1-4470-B64C-9671C4A9D2CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3734299F-9AF1-4470-B64C-9671C4A9D2CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3734299F-9AF1-4470-B64C-9671C4A9D2CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14B8C5C2-51BC-461F-8D34-59DDE092D73D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14B8C5C2-51BC-461F-8D34-59DDE092D73D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14B8C5C2-51BC-461F-8D34-59DDE092D73D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14B8C5C2-51BC-461F-8D34-59DDE092D73D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
