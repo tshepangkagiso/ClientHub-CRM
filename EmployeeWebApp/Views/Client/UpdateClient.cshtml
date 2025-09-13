@@ -1,11 +1,20 @@
-﻿@model CreateClientDTO
-<h3>Register a new client here</h3>
+﻿@model UpdateClientDTO
+<h3>Update client here</h3>
 <br />
-<form method="post" asp-action="CreateClient" enctype="multipart/form-data">
+<form method="post" asp-action="UpdateClient" enctype="multipart/form-data">
     <div class="text-danger" asp-validation-summary="ModelOnly"></div>
 
+    <!-- Id -->
     <div class="mb-3">
-        <label for="profilePicture" class="form-label" asp-for="ProfilePicture">Profile Picture</label>
+        <label for="Id" class="form-label" asp-for="Id">Id</label>
+        <input readonly class="form-control" type="number" id="Id" name="Id" value="@ViewBag.Client.Id"  >
+        <span class="text-danger" asp-validation-for="Id"></span>
+    </div>
+
+    <!-- ProfilePicture -->
+    <div class="mb-3">
+        <img src="http://localhost:4000/@ViewBag.Client.ProfilePictureUrl" alt="img" />
+        <label  for="profilePicture" class="form-label" asp-for="ProfilePicture">Profile Picture</label>
         <input class="form-control" type="file" id="profilePicture" name="ProfilePicture" accept="image/*">
         <span class="text-danger" asp-validation-for="ProfilePicture"></span>
     </div>
@@ -14,7 +23,7 @@
     <div class="mb-3">
         <label asp-for="Title" class="form-label">Title</label>
         <select asp-for="Title" class="form-select" name="Title" required>
-            <option value="" selected disabled>Select title</option>
+            <option value="@ViewBag.Client.Title" selected>@ViewBag.Client.Title</option>
             @if (ViewBag.Titles != null)
             {
                 @foreach (var title in ViewBag.Titles)
@@ -29,35 +38,35 @@
     <!-- Name -->
     <div class="mb-3">
         <label asp-for="Name" class="form-label">Name</label>
-        <input asp-for="Name" type="text" class="form-control" name="Name" required>
+        <input asp-for="Name" value="@ViewBag.Client.Name" type="text" class="form-control" name="Name" required>
         <span class="text-danger" asp-validation-for="Name"></span>
     </div>
 
     <!-- Surname -->
     <div class="mb-3">
         <label asp-for="Surname" class="form-label">Surname</label>
-        <input asp-for="Surname" type="text" class="form-control" name="Surname" required>
+        <input asp-for="Surname" value="@ViewBag.Client.Surname" type="text" class="form-control" name="Surname" required>
         <span class="text-danger" asp-validation-for="Surname"></span>
     </div>
 
     <!-- Email -->
     <div class="mb-3">
         <label asp-for="Email" class="form-label">Email</label>
-        <input asp-for="Email" type="email" class="form-control" name="Email" required>
+        <input asp-for="Email" value="@ViewBag.Client.Email" type="email" class="form-control" name="Email" required>
         <span class="text-danger" asp-validation-for="Email"></span>
     </div>
 
     <!-- Contact Number -->
     <div class="mb-3">
         <label asp-for="ContactNumber" class="form-label">Contact Number</label>
-        <input asp-for="ContactNumber" type="tel" class="form-control" name="ContactNumber">
+        <input asp-for="ContactNumber" value="@ViewBag.Client.ContactNumber" type="tel" class="form-control" name="ContactNumber">
         <span class="text-danger" asp-validation-for="ContactNumber"></span>
     </div>
 
     <!-- Address Information -->
     <div class="mb-3">
         <label asp-for="AddressInformation" class="form-label">Address Information</label>
-        <textarea asp-for="AddressInformation" class="form-control" name="AddressInformation" rows="3"></textarea>
+        <input asp-for="AddressInformation" type="text" value="@ViewBag.Client.AddressInformation" class="form-control" name="AddressInformation"></input>
         <span class="text-danger" asp-validation-for="AddressInformation"></span>
     </div>
 
@@ -65,7 +74,7 @@
     <div class="mb-3">
         <label asp-for="ClientType" class="form-label">Client Type</label>
         <select asp-for="ClientType" class="form-select" name="ClientType" required>
-            <option value="" selected disabled>Select client type</option>
+            <option value="@ViewBag.Client.ClientType" selected>@ViewBag.Client.ClientType</option>
             @if (ViewBag.ClientTypes != null)
             {
                 @foreach (var type in ViewBag.ClientTypes)
@@ -75,20 +84,6 @@
             }
         </select>
         <span class="text-danger" asp-validation-for="ClientType"></span>
-    </div>
-
-    <!-- Username -->
-    <div class="mb-3">
-        <label asp-for="Username" class="form-label">Username</label>
-        <input asp-for="Username" type="text" class="form-control" name="Username" required>
-        <span class="text-danger" asp-validation-for="Username"></span>
-    </div>
-
-    <!-- Password -->
-    <div class="mb-3">
-        <label asp-for="Password" class="form-label">Password</label>
-        <input asp-for="Password" type="password" class="form-control" name="Password" required>
-        <span class="text-danger" asp-validation-for="Password"></span>
     </div>
 
     <!-- Submit Button -->

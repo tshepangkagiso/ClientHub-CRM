@@ -1,0 +1,43 @@
+﻿@model UpdateByClientType
+<h3>Update Client Types Here </h3>
+<br />
+<form method="post" asp-action="UpdateClientsByTypes">
+    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+    <!-- Old Client Type -->
+    <div class="mb-3">
+        <label asp-for="OldType" class="form-label">Old Clients Type</label>
+        <select asp-for="OldType" class="form-select" name="OldType" required>
+            <option value="" selected disabled>Select client type</option>
+            @if (ViewBag.ClientTypes != null)
+            {
+                @foreach (var type in ViewBag.ClientTypes)
+                {
+                    <option value="@type">@type</option>
+                }
+            }
+        </select>
+        <span class="text-danger" asp-validation-for="OldType"></span>
+    </div>
+
+    <!-- New Client Type -->
+    <div class="mb-3">
+        <label asp-for="NewType" class="form-label">New Clients Type</label>
+        <select asp-for="NewType" class="form-select" name="NewType" required>
+            <option value="" selected disabled>Select client type</option>
+            @if (ViewBag.ClientTypes != null)
+            {
+                @foreach (var type in ViewBag.ClientTypes)
+                {
+                    <option value="@type">@type</option>
+                }
+            }
+        </select>
+        <span class="text-danger" asp-validation-for="NewType"></span>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="mb-3">
+        <input type="submit" class="btn btn-primary" value="Submit" />
+    </div>
+</form>

@@ -26,6 +26,8 @@
                 <td>@client.ContactNumber</td>
                 <td>@client.AddressInformation</td>
                 <td>@client.ClientType</td>
+                <td><a class="btn btn-link" asp-controller="Client" asp-action="UpdateClient" asp-route-id="@client.Id">Edit</a></td>
+                <td><a class="btn btn-link" asp-controller="Client" asp-action="DeleteClient" asp-route-id="@client.Id">Delete</a></td>
             </tr>
         }
     </tbody>

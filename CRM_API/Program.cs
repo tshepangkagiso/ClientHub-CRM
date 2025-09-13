@@ -12,13 +12,13 @@ builder.Services.AddSwaggerGen(c =>
     c.OperationFilter<SwaggerFileOperationFilter>();
 });
 
-builder.Services.AddCors(o =>
+/*builder.Services.AddCors(o =>
 {
     o.AddPolicy("EmployeeApp", policy =>
     {
         policy.WithOrigins("https://localhost:5001", "http://localhost:5000").AllowAnyHeader().AllowAnyMethod();
     });
-});
+});*/
 
 builder.Services.AddControllers();
 builder.Services.AddSingleton<IImageProcessor, ImageProcessor>();
@@ -27,7 +27,7 @@ builder.Services.AddSingleton<IPasswordEncryption, PasswordEncryption>();
 var app = builder.Build();
 
 //Middleware
-app.UseCors("EmployeeApp");
+//app.UseCors("EmployeeApp");
 if(app.Environment.IsDevelopment())
 {
     app.UseSwagger();
