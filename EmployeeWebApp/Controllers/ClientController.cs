@@ -1,7 +1,6 @@
-﻿
+﻿namespace EmployeeWebApp.Controllers;
 
-namespace EmployeeWebApp.Controllers;
-
+[SessionAuthorize]
 public class ClientController : Controller
 {
     private readonly IWebApiExecutor executor;

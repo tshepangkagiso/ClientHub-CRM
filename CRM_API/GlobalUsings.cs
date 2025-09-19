@@ -17,3 +17,14 @@ global using Microsoft.OpenApi.Models;
 global using Swashbuckle.AspNetCore.SwaggerGen;
 global using CRM_API.Services.Swagger;
 global using Microsoft.Data.SqlClient;
+
+global using Microsoft.AspNetCore.Mvc.Filters;
+global using Microsoft.IdentityModel.Tokens;
+global using System.IdentityModel.Tokens.Jwt;
+global using System.Security.Claims;
+global using System.Text;
+
+global using CRM_API.Services.Security.Authority.Filter;
+
+global using CRM_API.Services.Security;
+global using CRM_API.Services.Security.Authority;

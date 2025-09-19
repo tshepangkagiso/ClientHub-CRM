@@ -2,6 +2,7 @@
 
 [Route("[controller]")]
 [ApiController]
+
 public class ClientController : ControllerBase
 {
     private readonly ApplicationDbContext _context;
@@ -41,6 +42,7 @@ public class ClientController : ControllerBase
 
     //Get all clients
     [HttpGet]
+    [JwtAuthFilter]
     public async Task<IActionResult> OnGet()
     {
         try
@@ -58,6 +60,7 @@ public class ClientController : ControllerBase
 
     //Get client by id
     [HttpGet("{id}")]
+    [JwtAuthFilter]
     public async Task<IActionResult> Get( [FromRoute] int id)
     {
         try
@@ -78,6 +81,7 @@ public class ClientController : ControllerBase
 
     //Register a new client
     [HttpPost]
+    [JwtAuthFilter]
     public async Task<IActionResult> Post([FromForm] CreateClientDTO createClientDTO) 
     {
         // Use a transaction to ensure all operations succeed or fail together
@@ -141,6 +145,7 @@ public class ClientController : ControllerBase
 
     //Update
     [HttpPut]
+    [JwtAuthFilter]
     public async Task<IActionResult> Put([FromForm] UpdateClientDTO updateClientDTO)
     {
         try
@@ -202,6 +207,7 @@ public class ClientController : ControllerBase
 
     //Update all by ClientType
     [HttpPut("/Client/updateAll")]
+    [JwtAuthFilter]
     public async Task<IActionResult> PutCategory(UpdateByClientType updateByClientType)
     {
         try
@@ -235,6 +241,7 @@ public class ClientController : ControllerBase
 
     //Delete
     [HttpDelete("{id}")]
+    [JwtAuthFilter]
     public async Task<IActionResult> Delete(int id)
     {
         try

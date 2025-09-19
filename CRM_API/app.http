@@ -1,11 +1,17 @@
 @baseUrl = http://localhost:4000
 @contentType = application/json
+@token =eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBOYW1lIjoiQ2xpZW50QXBwIiwiUmVhZCI6InRydWUiLCJXcml0ZSI6InRydWUiLCJuYmYiOjE3NTgzMTUwMzUsImV4cCI6MTc1ODMxNTYzNX0.zWtfrratp_omu3EaIZ6Q3LqvecsqZeG1gJDoXfHPt5o
 
 
-# ------------------------------------------------------------
-# 1. HEALTH CHECK & DATABASE CONNECTION TEST
-# ------------------------------------------------------------
+###
+GET {{baseUrl}}/client
+Authorization: Bearer {{token}}
 
-### Test if the API is running and can connect to the database
-GET {{baseUrl}}/health
+
+###
+POST {{baseUrl}}/authority/auth
 Content-Type: {{contentType}}
+{
+  "username": "Client",
+  "password": "1234"
+}

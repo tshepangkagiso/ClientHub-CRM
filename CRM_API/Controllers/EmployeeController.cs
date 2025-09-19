@@ -2,6 +2,7 @@
 
 [Route("[Controller]")]
 [ApiController]
+//[JwtAuthFilter]
 public class EmployeeController : ControllerBase
 {
     private readonly ApplicationDbContext _context;
@@ -79,4 +80,14 @@ public class EmployeeController : ControllerBase
             return BadRequest("Failed to create employee");
         }
     }
+
+
+    /*  {
+          "name": "Admin",
+          "surname": "User",
+          "email": "admin@clienthub.com",
+          "username": "Admin1",
+          "password": "password"
+        }
+    */
 }

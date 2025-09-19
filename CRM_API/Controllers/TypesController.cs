@@ -2,6 +2,7 @@
 
 [Route("[controller]")]
 [ApiController]
+[JwtAuthFilter]
 public class TypesController : ControllerBase
 {
     private readonly ApplicationDbContext _context;
