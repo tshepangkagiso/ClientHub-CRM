@@ -27,6 +27,7 @@ builder.Services.AddCors(o =>
 });
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<IAuthenticator, Authenticator>();
 builder.Services.AddSingleton<IImageProcessor, ImageProcessor>();
 builder.Services.AddSingleton<IPasswordEncryption, PasswordEncryption>();
 

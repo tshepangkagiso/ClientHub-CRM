@@ -5,23 +5,29 @@
 public class AuthorityController : ControllerBase
 {
     private readonly IConfiguration configuration;
-    public AuthorityController(IConfiguration configuration)
+    private readonly IAuthenticator authenticator;
+    public AuthorityController(IConfiguration configuration, IAuthenticator authenticator)
     {
         this.configuration = configuration;
+        this.authenticator = authenticator;
     }
 
 
     [HttpPost("auth")]
-    public IActionResult Authenticate([FromBody] AppCredential credential)
+    public async Task<IActionResult> Authenticate([FromBody] LoginDTO credential)
     {
-        if(Authenticator.Authenticate(credential.Username, credential.Password))
+        var expiresAt = DateTime.UtcNow.AddMinutes(10);
+        var secretkey = configuration.GetValue<string>("SecretKey");
+
+        var (token, userId) = await authenticator.Authenticate(credential.Username, credential.Password, expiresAt, secretkey);
+
+        if (token != null)
         {
-            var expiresAt = DateTime.UtcNow.AddMinutes(10);
-            var secretkey = configuration.GetValue<string>("SecretKey");
             return Ok(new
             {
-                access_token = Authenticator.CreateToken(credential.Username, expiresAt, secretkey),
-                expires_at = expiresAt
+                access_token = token,
+                expires_at = expiresAt,
+                user_id = userId
             });
         }
         else
@@ -34,5 +40,6 @@ public class AuthorityController : ControllerBase
             return new UnauthorizedObjectResult(problemDetails);
         }
     }
+
 
 }

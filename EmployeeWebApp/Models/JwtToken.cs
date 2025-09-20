@@ -7,6 +7,9 @@ public class JwtToken
 
     [JsonProperty("expires_at")]
     public DateTime? ExpiresAt { get; set; }
+
+    [JsonProperty("user_id")]
+    public int UserID { get; set; }
 }
 
 

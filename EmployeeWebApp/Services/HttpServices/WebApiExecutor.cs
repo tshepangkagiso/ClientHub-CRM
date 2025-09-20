@@ -33,6 +33,15 @@ public class WebApiExecutor : IWebApiExecutor
             // Save token in session so Razor views can check it
             httpContext.Session.SetString("access_token", jwtToken.AccessToken);
             httpContext.Session.SetString("expires_at", jwtToken.ExpiresAt?.ToString("O") ?? "");
+
+            //After successful login i need to make a single user which is an employee who is logged in
+ 
+            var employee = await GetEmployeeById<Employee>(jwtToken.UserID);
+            httpContext.Session.SetString("employee_id", employee.Id.ToString());
+            httpContext.Session.SetString("employee_name", employee.Name);
+            httpContext.Session.SetString("employee_surname", employee.Surname);
+            httpContext.Session.SetString("employee_email", employee.Email);
+
             return true;
         }
 
@@ -51,6 +60,13 @@ public class WebApiExecutor : IWebApiExecutor
         }
 
         return httpClient;
+    }
+
+    public async Task<T?> GetEmployeeById<T>(int id)
+    {
+        var httpClient = httpClientFactory.CreateClient(apiName);
+        httpClient = PassAccessTokenToHttpHeaders(httpClient);
+        return await httpClient.GetFromJsonAsync<T>($"employee/{id}");
     }
 
 

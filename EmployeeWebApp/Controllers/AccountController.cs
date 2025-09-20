@@ -38,5 +38,6 @@ public class AccountController : Controller
         HttpContext.Session.Clear();
         return RedirectToAction("Login");
     }
+
 }
 

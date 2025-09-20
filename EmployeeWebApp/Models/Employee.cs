@@ -13,20 +13,21 @@ public class Employee
 
     public Employee()
     {
-        
+
     }
-    public Employee(int id , string name, string surname, string email)
+    public Employee(int id, string name, string surname, string email)
     {
-        Id = id;
-        Name = name;
-        Surname = surname;
-        Email = email;
+        this.Id = id;
+        this.Name = name;
+        this.Surname = surname;
+        this.Email = email;
     }
 
     public Employee(string name, string surname, string email)
     {
-        Name = name;
-        Surname = surname;
-        Email = email;
+        this.Name = name;
+        this.Surname = surname;
+        this.Email = email;
     }
 }
+

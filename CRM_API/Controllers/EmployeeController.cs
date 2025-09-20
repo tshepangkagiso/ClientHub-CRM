@@ -2,7 +2,7 @@
 
 [Route("[Controller]")]
 [ApiController]
-//[JwtAuthFilter]
+
 public class EmployeeController : ControllerBase
 {
     private readonly ApplicationDbContext _context;
@@ -14,6 +14,7 @@ public class EmployeeController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [JwtAuthFilter]
     public async Task<IActionResult> Get(int id)
     {
         try
@@ -30,6 +31,7 @@ public class EmployeeController : ControllerBase
     }
 
     [HttpGet]
+    [JwtAuthFilter]
     public async Task<IActionResult> Get()
     {
         try
@@ -46,6 +48,7 @@ public class EmployeeController : ControllerBase
     }
 
     [HttpPost]
+    [JwtAuthFilter]
     public async Task<IActionResult> Post(CreateEmployeeDTO createEmployeeDTO)
     {
         await using var transaction = await _context.Database.BeginTransactionAsync();

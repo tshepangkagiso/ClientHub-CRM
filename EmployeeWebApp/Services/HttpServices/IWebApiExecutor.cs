@@ -5,6 +5,7 @@ public interface IWebApiExecutor
     Task DeleteClient(int id);
     Task<T?> GetAllClients<T>();
     Task<T?> GetClientById<T>(int id);
+    Task<T?> GetEmployeeById<T>(int id);
     Task<T?> GetTitles<T>();
     Task<T?> GetTypes<T>();
     Task<bool> Login(UserLogin userLogin);
